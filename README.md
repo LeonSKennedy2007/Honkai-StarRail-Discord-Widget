@@ -1,0 +1,1 @@
+# Honkai-StarRail-Discord-Widget
