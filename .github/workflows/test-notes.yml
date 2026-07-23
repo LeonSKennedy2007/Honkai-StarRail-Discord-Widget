@@ -1,0 +1,26 @@
+name: Test Starrail Notes
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install genshin
+
+      - name: Run Test
+        env:
+          HSR_UID: ${{ secrets.HSR_UID }}
+          HOYOLAB_LTUID: ${{ secrets.HOYOLAB_LTUID }}
+          HOYOLAB_LTOKEN: ${{ secrets.HOYOLAB_LTOKEN }}
+        run: python test-notes.py
